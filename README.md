@@ -1,4 +1,4 @@
-# ruby_custom_enumerators
+# Ruby Custom Enumerators
 
 
 Ruby Project from theOdinProject
