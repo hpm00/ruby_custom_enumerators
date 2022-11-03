@@ -1,5 +1,5 @@
 module Enumerable
-  # Your code goes here
+
   def my_each_with_index
     return self unless block_given?
     i = 0 
@@ -45,17 +45,20 @@ module Enumerable
     result
   end 
 
-  def my_inject
+  def my_inject(initial_value)
+    accumulator = initial_value
+    self.my_each { |item| accumulator = yield(accumulator, item)  }
+    accumulator
   end
 
 end
 
-# You will first have to define my_each
-# on the Array class. Methods defined in
-# your enumerable module will have access
-# to this method
+# if two parameters in block, yield must consist of 2 parameters as well
+# look at my_each_with_index_spec.rb & my_inject_spec.rb (both has 2 parameters)
+# rest has 1 parameter
+# yield(parameter) => result of executing the block with given parameter
+
 class Array
-  # Define my_each here
 
   def my_each
     return self unless block_given?
